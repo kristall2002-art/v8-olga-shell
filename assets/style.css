@@ -315,3 +315,28 @@ html.dark .tgl .i-moon{opacity:1;transform:none}
 /* узкие экраны: «Расскажите, / каким вы видите свой образ» */
 .m-br{display:none}
 @media (max-width:600px){.m-br{display:inline}.d-br{display:none}}
+/* v8: шапка всегда видна при прокрутке */
+.hdr{position:fixed;left:0;right:0;top:0}
+body{padding-top:74px}
+html{scroll-padding-top:90px}
+/* v8: подписи у тумблера темы */
+.thm{display:flex;align-items:center;gap:8px}
+.thm-lb{border:0;background:none;padding:4px 0;font:400 13px var(--sans);color:var(--mute);cursor:pointer;transition:color .3s}
+.thm-lb:hover{color:var(--blue)}
+html:not(.dark) .thm-l,html.dark .thm-d{color:var(--ink);font-weight:500}
+@media (max-width:1180px) and (min-width:901px){.nav{gap:18px}.hdr-in{gap:18px}.hdr-act{gap:10px}.ico{width:30px}}
+/* телефон: шапка в две строки — логотип и «Записаться», ниже размер текста и тема */
+@media (max-width:600px){
+  body{padding-top:108px}
+  html{scroll-padding-top:120px}
+  .hdr-in{display:grid;grid-template-columns:1fr auto;grid-template-areas:"logo btn" "sz thm";height:auto;row-gap:6px;column-gap:10px;padding-top:9px;padding-bottom:8px}
+  .hdr-act{display:contents}
+  .logo{grid-area:logo;min-width:0}
+  .hdr-act .btn-sm{display:inline-flex;grid-area:btn;padding:10px 18px;font-size:14px}
+  .sz{grid-area:sz;display:flex;gap:6px;justify-self:start}
+  .thm{grid-area:thm;justify-self:end}
+}
+@media (max-width:1180px) and (min-width:901px){.logo-name{font-size:17px;letter-spacing:.14em;white-space:nowrap}.logo-sub{letter-spacing:.24em}}
+@media (max-width:600px){.hdr .logo-name{font-size:15px;letter-spacing:.1em;white-space:nowrap}.hdr .logo-sub{font-size:8.5px;letter-spacing:.22em;white-space:nowrap}.hdr-act .btn-sm{padding:9px 16px}}
+@media (max-width:350px){.hdr .logo-name{font-size:13.5px;letter-spacing:.08em}.hdr-act .btn-sm{padding:8px 12px;font-size:13px}}
+@media (max-width:350px){.hdr .logo-name{font-size:12.5px;letter-spacing:.05em}.hdr .logo-sub{font-size:7.5px;letter-spacing:.16em}.hdr-in{column-gap:8px}}

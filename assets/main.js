@@ -111,9 +111,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();})
   var sw=document.getElementById('theme');
   function aria(){sw.setAttribute('aria-checked',html.classList.contains('dark')?'true':'false');}
   aria();
-  sw.addEventListener('click',function(){
-    var d=html.classList.toggle('dark');aria();try{localStorage.setItem('os-theme',d?'dark':'light');}catch(e){}
-  });
+  function set(d){html.classList.toggle('dark',d);aria();try{localStorage.setItem('os-theme',d?'dark':'light');}catch(e){}}
+  sw.addEventListener('click',function(){set(!html.classList.contains('dark'));});
+  document.querySelectorAll('.thm-lb').forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-t')==='dark');});});
 })();
 
 /* крупнее / мельче */
