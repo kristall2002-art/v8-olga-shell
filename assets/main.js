@@ -120,7 +120,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();})
 (function(){
   var steps=['0.9','1','1.12','1.25'],cur=steps.indexOf(getComputedStyle(html).getPropertyValue('--zoom').trim()||'1');if(cur<0)cur=1;
   function set(i){cur=Math.max(0,Math.min(steps.length-1,i));html.style.setProperty('--zoom',steps[cur]);
-    try{localStorage.setItem('os-zoom',steps[cur]);}catch(e){}if(window.__ringLayout)window.__ringLayout();}
+    try{localStorage.setItem('os-zoom',steps[cur]);}catch(e){}if(window.__ringLayout)window.__ringLayout();if(window.__h1fit)window.__h1fit();}
   document.getElementById('szUp').addEventListener('click',function(){set(cur+1);});
   document.getElementById('szDown').addEventListener('click',function(){set(cur-1);});
 })();
@@ -140,6 +140,22 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
     h.classList.add('soft');
     onView(h,function(){h.classList.add('go');},.1);
   });
+})();
+
+/* v8: строка со сменой слов не переносится — кегль заголовка подгоняем под самое длинное слово */
+(function(){
+  var h=document.querySelector('.h1'),ln=h&&h.querySelector('.ln[data-words]');if(!ln)return;
+  var words=ln.getAttribute('data-words').split('|'),longest=words.reduce(function(a,b){return b.length>a.length?b:a;});
+  function fit(){
+    h.style.fontSize='';
+    var m=document.createElement('span');m.className='it';m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;left:-9999px';
+    m.textContent='вам '+longest;ln.appendChild(m);
+    var need=m.getBoundingClientRect().width,avail=h.clientWidth;ln.removeChild(m);
+    if(need>avail){var fs=parseFloat(getComputedStyle(h).fontSize);h.style.fontSize=Math.floor(fs*avail/need*0.97)+'px';}
+  }
+  fit();window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  window.__h1fit=fit;
 })();
 
 /* А3 — последнее слово заголовка меняется: спокойно, уверенно, комфортно */
