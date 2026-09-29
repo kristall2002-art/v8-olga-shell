@@ -312,3 +312,6 @@ html.dark .tgl .i-moon{opacity:1;transform:none}
 .ring-wrap{perspective-origin:50% 50%}
 .h1 .ln[data-words]{white-space:nowrap}
 @media (max-width:350px){.hdr-act{gap:4px}.tbtn{min-width:28px;height:30px;padding:0 5px}.tgl{width:44px;height:26px}.tgl-knob{width:20px;height:20px}html.dark .tgl-knob{transform:translateX(18px)}.logo-name{letter-spacing:.14em}}
+/* узкие экраны: «Расскажите, / каким вы видите свой образ» */
+.m-br{display:none}
+@media (max-width:600px){.m-br{display:inline}.d-br{display:none}}
