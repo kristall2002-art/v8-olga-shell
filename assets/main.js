@@ -51,7 +51,7 @@ document.querySelectorAll('.cnt').forEach(function(el){
   var step=360/n,rot=0,R=0,auto=!RM,drag=false,x0=0,r0=0,moved=0,vel=0,lastX=0,idleT;
   function layout(){
     var cw=wrap.clientWidth,w=Math.min(cw*0.62,Math.max(195,Math.min(299,cw*0.221)));/* v8: фото на 30% крупнее, на телефоне не шире экрана */
-    wrap.style.setProperty('--iw',w+'px');
+    wrap.style.setProperty('--iw',w+'px');wrap.style.height=Math.round(w*1.65*1.14+20)+'px';/* v8: блок по высоте фото, без пустых полей */
     R=Math.round(w*n/(2*Math.PI)*1.3);
     figs.forEach(function(f,i){f._a=step*i;});
     paint();

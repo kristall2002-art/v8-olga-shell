@@ -306,3 +306,7 @@ html.dark .tgl .i-moon{opacity:1;transform:none}
 /* v8: карусель работ на 30% крупнее */
 .ring-wrap{height:clamp(468px,60vw,728px)}
 @media (max-width:900px){.ring-wrap{height:clamp(420px,90vw,560px)}}
+/* v8: фото в карусели выше — 1 : 1.65, лица не режем */
+.ring figure{height:calc(var(--iw) * 1.65);top:calc(var(--iw) * -0.825)}
+.ring img{object-position:50% 30%}
+.ring-wrap{perspective-origin:50% 50%}
