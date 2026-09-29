@@ -244,14 +244,6 @@ main{overflow-x:clip}
 .h2.fly .fc{display:inline-block;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6);filter:blur(3px)}
 .h2.fly.go .fc{opacity:1;transform:none;filter:none;transition:transform 1.1s cubic-bezier(.2,.8,.2,1) var(--d),opacity .8s ease var(--d),filter .9s ease var(--d)}
 /* А2 подпись пером */
-.sig{display:block;width:min(100%,330px);height:auto;margin-top:30px;overflow:visible}
-.sig text{font:400 64px 'Marck Script',var(--serif);fill:transparent;stroke:var(--blue);stroke-width:1.2;stroke-dasharray:900;stroke-dashoffset:900}
-.sig .sig-rv{transform:scaleX(0);transform-box:fill-box;transform-origin:left center}
-.sig.go .sig-rv{transform:none;transition:transform 2.8s cubic-bezier(.45,.1,.35,1)}
-.sig.go text{stroke-dashoffset:0;fill:var(--blue);transition:stroke-dashoffset 3s ease,fill .9s ease 2.5s}
-.sig-ftr{width:min(100%,250px);margin-top:18px}
-.sig-ftr text{stroke:var(--sand)}
-.sig-ftr.go text{fill:var(--sand)}
 /* А3 слово меняется */
 .h1 .wd.swap{position:relative;display:inline-block;transition:width .6s ease;overflow:visible;perspective:600px}
 .h1 .sw{display:inline-block;white-space:nowrap}
@@ -273,7 +265,6 @@ html.dark .shine{background-image:linear-gradient(100deg,var(--sand) 0%,var(--sa
 @keyframes glint{0%,65%{left:-60%}100%{left:130%}}
 @media (prefers-reduced-motion:reduce){
   html.js .q .w{opacity:1}
-  .sig text{stroke-dashoffset:0;fill:var(--blue)} .sig-ftr text{fill:var(--sand)} .sig .sig-rv{transform:none}
 }
 
 /* v8: заголовки разделов проявляются мягко */
@@ -287,3 +278,18 @@ html.js .h2.soft.go{opacity:1;transform:none;transition:opacity 1s ease,transfor
 html.dark .h1 .wd.swap{animation-name:wGlowD}
 @keyframes wGlowD{0%,100%{text-shadow:0 0 6px rgba(159,192,234,.12);transform:scale(1)}50%{text-shadow:0 0 18px rgba(159,192,234,.38),0 0 36px rgba(159,192,234,.18);transform:scale(1.018)}}
 @media (prefers-reduced-motion:reduce){.h1 .wd.swap{animation:none}}
+/* v8: подпись печатается по букве */
+.sig{margin:30px 0 0;font:400 44px/1.2 'Marck Script',var(--serif);color:var(--blue);white-space:nowrap}
+.sig-ftr{margin:16px 0 0;font-size:34px;color:var(--sand)}
+.sig .tl,.ftr .sig .tl{display:inline;padding:0;opacity:0;transition:opacity .25s ease}
+.sig .tl.on{opacity:1}
+.sig.typing:after{content:"";display:inline-block;width:1px;height:.8em;margin-left:3px;background:currentColor;vertical-align:-.05em;animation:caret .8s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+/* v8: карточки мягко светятся при наведении */
+.card{transition:background-color .4s,border-color .6s,box-shadow .6s ease}
+@media (hover:hover){.card:hover{border-color:#c9d8ec;box-shadow:12px 14px 0 -2px var(--shadowc),0 0 34px rgba(50,95,147,.16),0 0 70px rgba(120,160,215,.12)}}
+html.dark .card:hover{border-color:#34507a;box-shadow:12px 14px 0 -2px var(--shadowc),0 0 34px rgba(159,192,234,.16),0 0 70px rgba(159,192,234,.08)}
+/* v8: отзывы с аватаркой и именем */
+.q blockquote{margin:0}
+.q .q-who{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0 18px;font:400 15px var(--sans);color:var(--mute)}
+.q-av{width:44px;height:44px;border-radius:50%;background:var(--chip);color:var(--blue);display:grid;place-items:center;flex:none}

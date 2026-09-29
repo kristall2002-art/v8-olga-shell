@@ -147,6 +147,19 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
   });
 })();
 
+/* подпись «Ольга Шевелева» печатается по букве */
+(function(){
+  document.querySelectorAll('.sig').forEach(function(el){
+    if(RM)return;
+    var t=el.textContent;el.textContent='';
+    var ls=[];for(var i=0;i<t.length;i++){var c=document.createElement('span');c.className='tl';c.setAttribute('aria-hidden','true');c.textContent=t[i];el.appendChild(c);ls.push(c);}
+    onView(el,function(){
+      el.classList.add('typing');var k=0;
+      (function next(){if(k<ls.length){ls[k++].classList.add('on');setTimeout(next,t[k-1]===' '?60:130);}else setTimeout(function(){el.classList.remove('typing');},1600);})();
+    },.6);
+  });
+})();
+
 /* А3 — последнее слово заголовка меняется: спокойно, уверенно, естественно */
 (function(){
   var ln=document.querySelector('.h1 .ln[data-words]');if(!ln||RM)return;
