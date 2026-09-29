@@ -301,3 +301,15 @@ html.dark .card:hover{border-color:#34507a;box-shadow:12px 14px 0 -2px var(--sha
 html.dark .rv-head{color:#9fc0ea}
 @media (max-width:760px){.rvs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;padding:56px 4px 12px;margin-top:24px}
   .rv{scroll-snap-align:start;padding:76px 24px 28px}.rv-ph{left:22px;width:96px;height:96px}}
+/* v8: тумблер темы, как в iPhone */
+.tgl{position:relative;flex:none;width:54px;height:30px;padding:0;border-radius:15px;border:1px solid #cfdbea;background:#e3ebf5;cursor:pointer;transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+.tgl-knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--sand);display:grid;place-items:center;box-shadow:0 2px 6px rgba(22,33,58,.25);transition:transform .38s cubic-bezier(.4,.2,.2,1.15),background-color .35s,color .35s}
+.tgl-knob svg{grid-area:1/1;transition:opacity .3s,transform .38s}
+.tgl .i-moon{opacity:0;transform:rotate(-40deg)}
+html.dark .tgl{background:#3a6aa1;border-color:#5a88c0;box-shadow:0 0 0 3px rgba(143,180,227,.14),0 0 16px rgba(143,180,227,.45)}
+html.dark .tgl-knob{transform:translateX(24px);background:#f4f7fc;color:#325f93}
+html.dark .tgl .i-sun{opacity:0;transform:rotate(40deg)}
+html.dark .tgl .i-moon{opacity:1;transform:none}
+.tgl:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media (max-width:520px){.tgl{width:50px;height:28px}.tgl-knob{width:22px;height:22px}html.dark .tgl-knob{transform:translateX(22px)}}
+@media (prefers-reduced-motion:reduce){.tgl,.tgl-knob,.tgl-knob svg{transition:none}}

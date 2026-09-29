@@ -106,10 +106,15 @@ function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','tr
 lb.addEventListener('click',closeLb);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
 
-/* светлая / тёмная тема */
-document.getElementById('theme').addEventListener('click',function(){
-  var d=html.classList.toggle('dark');try{localStorage.setItem('os-theme',d?'dark':'light');}catch(e){}
-});
+/* светлая / тёмная тема — тумблер, выбор запоминается */
+(function(){
+  var sw=document.getElementById('theme');
+  function aria(){sw.setAttribute('aria-checked',html.classList.contains('dark')?'true':'false');}
+  aria();
+  sw.addEventListener('click',function(){
+    var d=html.classList.toggle('dark');aria();try{localStorage.setItem('os-theme',d?'dark':'light');}catch(e){}
+  });
+})();
 
 /* крупнее / мельче */
 (function(){
