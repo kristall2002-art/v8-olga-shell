@@ -50,7 +50,7 @@ document.querySelectorAll('.cnt').forEach(function(el){
   var ring=wrap.querySelector('.ring'),figs=[].slice.call(ring.children),n=figs.length;
   var step=360/n,rot=0,R=0,auto=!RM,drag=false,x0=0,r0=0,moved=0,vel=0,lastX=0,idleT;
   function layout(){
-    var w=Math.max(150,Math.min(230,wrap.clientWidth*0.17));
+    var cw=wrap.clientWidth,w=Math.min(cw*0.62,Math.max(195,Math.min(299,cw*0.221)));/* v8: фото на 30% крупнее, на телефоне не шире экрана */
     wrap.style.setProperty('--iw',w+'px');
     R=Math.round(w*n/(2*Math.PI)*1.3);
     figs.forEach(function(f,i){f._a=step*i;});
@@ -139,19 +139,6 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
   document.querySelectorAll('.h2').forEach(function(h){
     h.classList.add('soft');
     onView(h,function(){h.classList.add('go');},.1);
-  });
-})();
-
-/* подпись «Ольга Шевелева» печатается по букве */
-(function(){
-  document.querySelectorAll('.sig').forEach(function(el){
-    if(RM)return;
-    var t=el.textContent;el.textContent='';
-    var ls=[];for(var i=0;i<t.length;i++){var c=document.createElement('span');c.className='tl';c.setAttribute('aria-hidden','true');c.textContent=t[i];el.appendChild(c);ls.push(c);}
-    onView(el,function(){
-      el.classList.add('typing');var k=0;
-      (function next(){if(k<ls.length){ls[k++].classList.add('on');setTimeout(next,t[k-1]===' '?60:130);}else setTimeout(function(){el.classList.remove('typing');},1600);})();
-    },.6);
   });
 })();
 

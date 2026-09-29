@@ -272,19 +272,6 @@ html.js .h2.soft{opacity:0;transform:translateY(14px)}
 html.js .h2.soft.go{opacity:1;transform:none;transition:opacity 1s ease,transform 1s ease}
 .stats{flex-wrap:wrap;row-gap:24px}
 @media (max-width:600px){.stats{gap:24px 28px}.stat b{font-size:36px}}
-/* v8: меняющееся слово мягко светится и едва заметно пульсирует */
-.h1 .wd.swap{transform-origin:left 60%;animation:wGlow 3.2s ease-in-out infinite}
-@keyframes wGlow{0%,100%{text-shadow:0 0 6px rgba(50,95,147,.10);transform:scale(1)}50%{text-shadow:0 0 18px rgba(50,95,147,.32),0 0 34px rgba(120,160,215,.18);transform:scale(1.018)}}
-html.dark .h1 .wd.swap{animation-name:wGlowD}
-@keyframes wGlowD{0%,100%{text-shadow:0 0 6px rgba(159,192,234,.12);transform:scale(1)}50%{text-shadow:0 0 18px rgba(159,192,234,.38),0 0 36px rgba(159,192,234,.18);transform:scale(1.018)}}
-@media (prefers-reduced-motion:reduce){.h1 .wd.swap{animation:none}}
-/* v8: подпись печатается по букве */
-.sig{margin:30px 0 0;font:400 44px/1.2 'Marck Script',var(--serif);color:var(--blue);white-space:nowrap}
-.sig-ftr{margin:16px 0 0;font-size:34px;color:var(--sand)}
-.sig .tl,.ftr .sig .tl{display:inline;padding:0;opacity:0;transition:opacity .25s ease}
-.sig .tl.on{opacity:1}
-.sig.typing:after{content:"";display:inline-block;width:1px;height:.8em;margin-left:3px;background:currentColor;vertical-align:-.05em;animation:caret .8s steps(1) infinite}
-@keyframes caret{50%{opacity:0}}
 /* v8: карточки мягко светятся при наведении */
 .card{transition:background-color .4s,border-color .6s,box-shadow .6s ease}
 @media (hover:hover){.card:hover{border-color:#c9d8ec;box-shadow:12px 14px 0 -2px var(--shadowc),0 0 34px rgba(50,95,147,.16),0 0 70px rgba(120,160,215,.12)}}
@@ -314,3 +301,8 @@ html.dark .tgl .i-moon{opacity:1;transform:none}
 @media (max-width:520px){.tgl{width:50px;height:28px}.tgl-knob{width:22px;height:22px}html.dark .tgl-knob{transform:translateX(22px)}}
 @media (prefers-reduced-motion:reduce){.tgl,.tgl-knob,.tgl-knob svg{transition:none}}
 .rv-ph img{width:100%;height:100%;object-fit:cover;border-radius:19px;display:block}
+.rv-ini{font:400 44px/1 var(--serif);color:var(--blue)}
+.rv-name+.rv-head{margin-top:18px}
+/* v8: карусель работ на 30% крупнее */
+.ring-wrap{height:clamp(468px,60vw,728px)}
+@media (max-width:900px){.ring-wrap{height:clamp(420px,90vw,560px)}}
