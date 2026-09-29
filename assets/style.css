@@ -289,7 +289,15 @@ html.dark .h1 .wd.swap{animation-name:wGlowD}
 .card{transition:background-color .4s,border-color .6s,box-shadow .6s ease}
 @media (hover:hover){.card:hover{border-color:#c9d8ec;box-shadow:12px 14px 0 -2px var(--shadowc),0 0 34px rgba(50,95,147,.16),0 0 70px rgba(120,160,215,.12)}}
 html.dark .card:hover{border-color:#34507a;box-shadow:12px 14px 0 -2px var(--shadowc),0 0 34px rgba(159,192,234,.16),0 0 70px rgba(159,192,234,.08)}
-/* v8: отзывы с аватаркой и именем */
-.q blockquote{margin:0}
-.q .q-who{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0 18px;font:400 15px var(--sans);color:var(--mute)}
-.q-av{width:44px;height:44px;border-radius:50%;background:var(--chip);color:var(--blue);display:grid;place-items:center;flex:none}
+/* v8: отзывы карточками — фото выступает сверху слева */
+.rvs{display:grid;grid-template-columns:repeat(2,1fr);gap:70px 32px;margin-top:84px}
+.rv{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:84px 34px 34px;box-shadow:0 18px 40px -28px rgba(22,33,58,.25)}
+.rv-ph{position:absolute;left:30px;top:-46px;width:112px;height:112px;border-radius:22px;background:linear-gradient(160deg,var(--chip),var(--h2c));color:var(--blue);display:grid;place-items:center;box-shadow:0 12px 26px -14px rgba(22,33,58,.35);border:3px solid var(--card)}
+.rv-name{display:flex;align-items:center;gap:12px;margin:0;font:400 26px/1.2 var(--serif);color:var(--ink)}
+.rv-star{color:var(--sand);flex:none}
+.rv-nick{margin:6px 0 18px;font-size:15px;color:var(--mute)}
+.rv-head{margin:0 0 12px;font:italic 500 22px/1.3 var(--serif);color:var(--blue)}
+.rv-txt{margin:0;font-size:16px;line-height:1.65}
+html.dark .rv-head{color:#9fc0ea}
+@media (max-width:760px){.rvs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;padding:56px 4px 12px;margin-top:24px}
+  .rv{scroll-snap-align:start;padding:76px 24px 28px}.rv-ph{left:22px;width:96px;height:96px}}

@@ -128,16 +128,6 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
   },{passive:true});
 });
 
-/* отзывы — целиком, без появления по словам; переключение точками, сами меняются раз в 7 секунд */
-(function(){
-  var box=document.getElementById('quotes');if(!box)return;
-  var qs=box.querySelectorAll('.q'),dots=box.querySelector('.q-dots'),i=0,tm;
-  function show(n){qs[i].classList.remove('on');dots.children[i].classList.remove('on');i=(n+qs.length)%qs.length;qs[i].classList.add('on');dots.children[i].classList.add('on');}
-  qs.forEach(function(_,n){var d=document.createElement('button');d.setAttribute('aria-label','Отзыв '+(n+1));if(!n)d.className='on';
-    d.addEventListener('click',function(){clearInterval(tm);show(n);});dots.appendChild(d);});
-  if(!RM)tm=setInterval(function(){show(i+1);},9000);
-})();
-
 /* заголовки разделов проявляются мягко, без слетающих букв */
 (function(){
   if(RM)return;
