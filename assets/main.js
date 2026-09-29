@@ -101,9 +101,9 @@ document.querySelectorAll('.cnt').forEach(function(el){
 
 /* лайтбокс */
 var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
-function openLb(src,alt){lbi.src=src;lbi.alt=alt||'';lb.classList.add('open');lb.setAttribute('aria-hidden','false');}
+function openLb(src,alt){lbi.src=src;lbi.alt=alt||'';lb.classList.add('open');lb.setAttribute('aria-hidden','false');lb._t=Date.now();}
 function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');}
-lb.addEventListener('click',closeLb);
+lb.addEventListener('click',function(){if(Date.now()-(lb._t||0)<450)return;closeLb();});/* тап, открывший фото, не закрывает его */
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
 
 /* светлая / тёмная тема — тумблер, выбор запоминается */
