@@ -142,7 +142,7 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
   });
 })();
 
-/* А3 — последнее слово заголовка меняется: спокойно, уверенно, естественно */
+/* А3 — последнее слово заголовка меняется: спокойно, уверенно, комфортно */
 (function(){
   var ln=document.querySelector('.h1 .ln[data-words]');if(!ln||RM)return;
   var words=ln.getAttribute('data-words').split('|'),wi=0;
@@ -164,7 +164,7 @@ document.querySelectorAll('.btn.fill').forEach(function(b){
   }
   setTimeout(function(){
     var first=put(words[0],'cur');wd.innerHTML='';wd.appendChild(first);
-    setInterval(next,3200);
+    setInterval(next,1600);
   },2600);
 })();
 
